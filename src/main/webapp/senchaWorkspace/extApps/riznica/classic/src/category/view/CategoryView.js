@@ -1,0 +1,46 @@
+Ext.define("riznica.category.view.CategoryView", {
+    extend: "Ext.grid.Panel",
+    xtype: "category-view-category",
+
+    requires: [
+        "riznica.category.store.CategoryStore",
+        "riznica.category.controller.view.CategoryViewController"
+    ],
+    controller: 'categoryViewController',
+
+
+    store: {
+        type: "category-Store"
+    },
+
+    columns: [
+        {
+            text: "Name",
+            dataIndex: "name",
+            width:"100%"
+        }
+
+    ]
+    ,
+    tools: [{
+        type: 'plus',
+        handler: function () {
+            var config =
+                {
+                    xtype: "add-new-category"
+                }
+            var win = Ext.ComponentMgr.create(config);
+            win.show();
+        }
+
+    }],
+
+    listeners: {
+        //edit or delete selected category
+        itemcontextmenu: "onClickItemContextMenuCategory"
+    }
+
+
+});
+
+
