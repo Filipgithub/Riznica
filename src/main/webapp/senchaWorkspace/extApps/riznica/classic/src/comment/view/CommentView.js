@@ -4,6 +4,7 @@ Ext.define("riznica.comment.view.CommentView", {
         itemId: "comment-view-commentId",
         readOnly: true,
         height: 240,
+        width: "100%",
         scrollable:true,
         //overflowY: 'scroll',
         title: "Comments",

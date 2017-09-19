@@ -34,17 +34,20 @@ class BootStrap {
         new Category(name: "Movies").save(flush: true, failOnError: true)
         new Category(name: "News").save(flush: true, failOnError: true)
         10.times {
-            new Post(postContent: "Neki content", postTitle: "Naslov broj " + (it + 1), user: User.findById(1), category: Category.findById(3)).save(flush: true, failOnError: true)
+            new Post(postContent: "Neki content", postTitle: "Title Admin No. " + (it +1), user: User.findById(1), category: Category.findById(3)).save(flush: true, failOnError: true)
+        }
+        10.times {
+            new Post(postContent: "Neki content", postTitle: "Title  Filip No. " + (it + 1), user: User.findById(3), category: Category.findById(2)).save(flush: true, failOnError: true)
         }
 
         5.times {
-            new Comment(author: User.findById(1).username, comment: "Prvi komentar", user: User.findById(1), post: Post.findById(1)).save(flush: true, failOnError: true)
+            new Comment(author: User.findById(1).username, comment: "First comment", user: User.findById(1), post: Post.findById(1)).save(flush: true, failOnError: true)
         }
         5.times {
-            new Comment(author: User.findById(1).username, comment: "Prvi komentar", user: User.findById(1), post: Post.findById(3)).save(flush: true, failOnError: true)
+            new Comment(author: User.findById(1).username, comment: "Second comment", user: User.findById(1), post: Post.findById(3)).save(flush: true, failOnError: true)
         }
         5.times {
-            new Comment(author: User.findById(3).username, comment: "Prvi komentar", user: User.findById(2), post: Post.findById(5)).save(flush: true, failOnError: true)
+            new Comment(author: User.findById(3).username, comment: "Third comment", user: User.findById(2), post: Post.findById(5)).save(flush: true, failOnError: true)
         }
 
 

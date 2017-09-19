@@ -15,12 +15,20 @@ class PostCommand implements Validateable {
     User user
     Category postCategory
 
+    String userName
+    String categoryName
+
+
+
 
 
     static constraints = {
         id nullable: true
         postTitle nullable: true
         postCategory nullable: true
+        postContent nullable: true
         user nullable: true
+        userName nullable :true
+        categoryName nullable :true
     }
 }

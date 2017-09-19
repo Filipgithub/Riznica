@@ -10,11 +10,10 @@ class PostController extends GrichRegistryDataController  {
 
     PostService postService
 
-    def readAll() {
-        BaseSearchCommand cmd = new BaseSearchCommand()
-        cmd.limit = 0
-        cmd.start = 0
-        validateCallAndRender(cmd,{postService.readAll()})
+    def readAll(PostCommand cmd) {
+
+        validateCallAndRender(cmd, {postService.readAll(cmd)})
+
     }
 
     def create(PostCommand cmd){
@@ -29,5 +28,7 @@ class PostController extends GrichRegistryDataController  {
         validateCallAndRender(cmd, { postService.delete(cmd) })
 
     }
+
+
 
 }

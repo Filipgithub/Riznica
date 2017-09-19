@@ -49,13 +49,14 @@ Ext.define('riznica.main.view.MainView', {
     },
 
     config: {
-        topToolbarHeight: 80,
+        topToolbarHeight: 150,
         homeAutoNavigate: true
     },
 
     initComponent: function () {
         var me = this;
         var i, arrayLength;
+        var radioGroupValue = "category";
 
         //noinspection JSUnresolvedFunction
         var topToolbarHeight = me.getTopToolbarHeight();
@@ -133,7 +134,7 @@ Ext.define('riznica.main.view.MainView', {
                             style: 'margin: 0px 10px 0px 10px',
                             layout: {type: 'hbox', align: 'middle'},
                             items: [
-                                {xtype: 'component', html: 'Addiko: Test', cls: 'app-header-view-title-text'},
+                                {xtype: 'component', html: 'Addiko: Blog', cls: 'app-header-view-title-text'},
                                 {xtype: 'component', border: false, flex: 1},
                                 {
                                     xtype: 'box', style: {textAlign: 'right', marginRight: '10px'},
@@ -142,25 +143,113 @@ Ext.define('riznica.main.view.MainView', {
                             ]
                         },
                         {
+
                             xtype: 'container', flex: 1,
                             layout: {type: 'hbox', align: 'middle'},
-                            style: 'margin: 0px 10px 0px 10px',
+                            style: 'margin: 5px 10px 5px 5px',
                             items: [
-                                {
-                                    //search field
-                                    xtype: 'textfield',
-                                    fieldLabel: "Search",
-                                    width: 180,
-                                    flex: 1,
-                                    listeners: {change: 'searchOnChange'}
+                                {   //radiobutton-search filter
+                                    xtype: 'fieldcontainer',
+                                    itemId: 'radioId',
+                                    fieldLabel: 'Search post by',
+                                    defaultType: 'radiofield',
+                                    defaults: {
+                                        flex: 1
+                                    },
+                                    layout: 'hbox',
 
-                                }
-                                ,
+                                    items: [
+                                        {
+                                            //on click category radio button,search post by category
+                                            boxLabel: 'Category',
+                                            name: 'group',
+                                            checked: true,
+                                            id: 'radio1',
+                                            margin: "0px 5px 5px 0px",
+                                            listeners:{
+                                                change:function (thisEl, newValue, oldValue) {
+                                                    var rb1 = Ext.getCmp('radio1');
+                                                    if(rb1.getValue()) {
+                                                        radioGroupValue = "category";
+                                                        var searchFieldValue = me.down('#searchTextField').getValue();
+                                                        me.getController().searchOnChange(radioGroupValue,searchFieldValue);
+                                                    }
+                                                }
+                                            }
+
+                                        }, {
+                                            //on click title radio button,search post by title
+                                            boxLabel: 'Title',
+                                            name: 'group',
+                                            id: 'radio2',
+                                            margin: "0px 5px 5px 0px",
+                                            listeners:{
+                                                change:function () {
+                                                    var rb1 = Ext.getCmp('radio2');
+                                                    if(rb1.getValue()) {
+                                                        radioGroupValue = "title";
+                                                        var searchFieldValue = me.down('#searchTextField').getValue();
+                                                        me.getController().searchOnChange(radioGroupValue,searchFieldValue);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        // {
+                                        //     boxLabel: 'Date',
+                                        //     name: 'group',
+                                        //     id: 'radio3',
+                                        //     margin: "0px 5px 5px 0px",
+                                        //     listeners:{
+                                        //         change:function () {
+                                        //             var rb1 = Ext.getCmp('radio1');
+                                        //             if(rb1.getValue()) {
+                                        //
+                                        //             }
+                                        //         }
+                                        //     }
+                                        //
+                                        // }
+                                        , {
+                                            //on click author radio button,search post by author
+                                            boxLabel: 'Author',
+                                            name: 'group',
+                                            id: 'radio3',
+                                            margin: "0px 5px 5px 0px",
+                                            listeners:{
+                                                change:function () {
+                                                    var rb1 = Ext.getCmp('radio3');
+                                                    if(rb1.getValue()) {
+                                                        radioGroupValue = "author";
+                                                        var searchFieldValue = me.down('#searchTextField').getValue();
+                                                        me.getController().searchOnChange(radioGroupValue,searchFieldValue);
+                                                    }
+                                                }
+                                            }
+
+                                        }
+                                    ]
+
+
+
+
+                                },
+
 
                                 {
                                     xtype: 'container',
                                     flex: 4
 
+
+                                },
+                                {
+                                    //add new post
+                                    xtype: 'button',
+                                    text: "Add new post",
+                                    style: 'margin: 0px 50px 0px 0px',
+                                    listeners: {
+                                        //on click listener -add new post button
+                                        click: "addNewPost"
+                                    }
 
                                 },
                                 {
@@ -179,6 +268,7 @@ Ext.define('riznica.main.view.MainView', {
                                 // },
                                 {
                                     xtype: 'toolbar',
+                                    style: 'background-color: transparent !important; ',
                                     items: [
                                         {
                                             iconCls: 'x-fa fa-cog',
@@ -226,7 +316,28 @@ Ext.define('riznica.main.view.MainView', {
                                 }
 
                             ]
+                        },
+                        {
+                            xtype: 'container', flex: 1,
+                            layout: {type: 'hbox', align: 'middle'},
+                            style: 'margin: 5px 5px 5px 5px',
+                            items: [{
+                                //search field
+                                xtype: 'textfield',
+                                // fieldLabel: "Search",
+                                width: 380,
+                                itemId: 'searchTextField',
+                                // flex: 1,
+                                listeners: {change: function(thisEl,newValue,oldValue){
+                                    me.getController().searchOnChange(radioGroupValue,newValue);
+                                }}
+                            }
+
+                            ]
+
                         }
+
+
                     ]
                 },
                 {
@@ -280,30 +391,6 @@ Ext.define('riznica.main.view.MainView', {
                                     items: [{
                                         layout: {type: 'vbox'},
                                         items: [
-                                            {
-                                                //panel for posts
-                                                xtype: 'panel',
-                                                itemId: 'formId',
-                                                layout: {type: 'hbox'},
-                                                //buttons add remove for posts
-                                                items: [
-                                                    {
-                                                        //add new post
-                                                        xtype: 'button',
-                                                        text: "Add new post",
-                                                        style: 'margin: 0px 0px 5px 0px',
-                                                        listeners: {
-                                                            //on click listener -add new post button
-                                                            click: "addNewPost"
-                                                        }
-
-                                                    }
-
-
-                                                ]
-
-
-                                            },
                                             {
                                                 //grid panel with recently added posts
                                                 xtype: 'panel',

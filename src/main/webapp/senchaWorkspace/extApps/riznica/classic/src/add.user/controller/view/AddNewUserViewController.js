@@ -6,14 +6,14 @@ Ext.define("riznica.add.user.controller.view.AddNewUSerViewController", {
         onClickAddNewUser: function (thisEl) {
             /* var username = Ext.ComponentQuery.query('#usrName')[0].getValue();
              var password = Ext.ComponentQuery.query('#password')[0].getValue(); */
-            var data = Ext.ComponentQuery.query("#user-form")[0].getForm().getNestedValues();
+            var data = thisEl.up().down("#user-form").getForm().getNestedValues();
 
             console.log(data);
             grich.core.util.AjaxSubmitHelper.invokeRequest({
                 url: riznica.configuration.contextPath + "/api/user/create",
                 method: "POST",
                 //maskComponents: { component: thisEl.getView() },
-                jsonData: data/* nesto*/,
+                jsonData: data,
                 // scope: me,
                 async: false,
                 success: function (response, options, responseTextDecoded) {

@@ -14,7 +14,7 @@ Ext.define("riznica.post.store.PostStore", {
         api: {
             read: riznica.configuration.contextPath + "/api/post/readAll",
             write: riznica.configuration.contextPath + "/api/post/create",
-            update: riznica.configuration.contextPath + "/api/post/update",
+            // update: riznica.configuration.contextPath + "/api/post/update",
             delete: riznica.configuration.contextPath + "/api/post/delete"
         },
 
@@ -35,5 +35,7 @@ Ext.define("riznica.post.store.PostStore", {
         sortParam: "sortBy",
         directionParam: "sortDirection"
     }
+
+
 
 });

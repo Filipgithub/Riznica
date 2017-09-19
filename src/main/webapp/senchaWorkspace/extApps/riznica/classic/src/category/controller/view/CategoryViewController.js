@@ -32,6 +32,7 @@ Ext.define("riznica.category.controller.view.CategoryViewController", {
     onClickItemContextMenuCategory: function (tree, record, item, index, e, eOpts) {
         // Optimize : create menu once
         var menu_grid = new Ext.menu.Menu({
+
            items:
                 [
                     //editing category
@@ -47,6 +48,8 @@ Ext.define("riznica.category.controller.view.CategoryViewController", {
 
                         Ext.ComponentQuery.query('#categoryId')[0].setValue(record.data.id);
                         Ext.ComponentQuery.query('#categoryName')[0].setValue(record.data.name);
+                        Ext.ComponentQuery.query("#category-view-id")[0].getSelectionModel().deselectAll(true);
+
                     }
                     },
                     //deleting category
@@ -77,7 +80,7 @@ Ext.define("riznica.category.controller.view.CategoryViewController", {
                                                 }
                                             };
                                             Ext.ComponentQuery.query('#category-view-id')[0].getStore().load();
-
+                                            Ext.ComponentQuery.query("#category-view-id")[0].getSelectionModel().deselectAll(true);
                                             grich.core.util.NotificationUtils.showSuccessNotification(notificationDescriptor);
 
                                         }

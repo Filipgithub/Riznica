@@ -193,7 +193,7 @@ Ext.define('riznica.main.view.MainViewController', {
             this.redirectTo(clickedItem.topLevelRouteId, false);
         }
     },
-    addNewPost:function () {
+    addNewPost: function () {
         var win = new Ext.Window({
             itemId: "postFormId",
             title: 'Add new post',
@@ -293,32 +293,29 @@ Ext.define('riznica.main.view.MainViewController', {
 
         });
     },
-    searchOnChange: function (thisEl, newValue, oldValue) {
-        var store = Ext.ComponentQuery.query('[xtype=category-view-category]')[0].getStore();
-        var storeTitle = Ext.ComponentQuery.query('[xtype=post-view-post]')[0].getStore();
-        console.log(store);
-        console.log(storeTitle);
-        console.log(Ext.ComponentQuery.query('[xtype="category-view-category"]')[0]);
-        console.log(Ext.ComponentQuery.query('[xtype="post-view-post"]')[0]);
-        store.clearFilter();
-        storeTitle.clearFilter();
-        //search for categories
-        store.filterBy(function (record, id) {
-            // 'name' is 'Bart Simpson Something'
+    searchOnChange: function (filterType, filterValue) {
 
-            // case-insensitive match of 'simpson' in the name
-            return record.get('name').toLowerCase().indexOf(newValue.toString().toLowerCase()) > -1;
+        if(filterType=="category") {
+            //search for posts by category
+            Ext.ComponentQuery.query('#post-view-postId')[0].getStore().load({
+                params: {categoryName: filterValue}
+            });
+        }
+        else if(filterType=="title") {
+           //search for posts by post title
+              Ext.ComponentQuery.query('#post-view-postId')[0].getStore().load({
+                  params: {postTitle: filterValue}
+              });
+        }
+        else if(filterType=="author"){
+            //search for posts by post author
+            Ext.ComponentQuery.query('#post-view-postId')[0].getStore().load({
+                params: {userName: filterValue}
+            });
 
-
-        });
-        //serach for posts
-        storeTitle.filterBy(function (record, id) {
-            // 'name' is 'Bart Simpson Something'
-
-            // case-insensitive match of 'simpson' in the name
-            return record.get('postTitle').toLowerCase().indexOf(newValue.toString().toLowerCase()) > -1;
-        });
+        }
     },
+
 
     onClickAddUser: function () {
         Ext.create('riznica.add.user.view.AddUserView');
