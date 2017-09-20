@@ -10,24 +10,24 @@ import hr.addiko.riznica.core.command.UserCommand
 class UserService extends GrichRegistryDataController {
 
 
-    def readAll() {
-        def result = hr.addiko.riznica.user.User.findAll()
+  def readAll() {
+    def result = hr.addiko.riznica.user.User.findAll()
 
-        HibernateUtils.initialize(result)
+    HibernateUtils.initialize(result)
 
-        [success: true, data: result]
-    }
+    [success: true, data: result]
+  }
 
-    def create(UserCommand cmd) {
-
-
-        User usr = new User(username: cmd.username, password: cmd.password)
-        usr.save()
-        [success: true]
-    }
+  def create(UserCommand cmd) {
 
 
-    def update(UserCommand cmd) {
+    User usr = new User(username: cmd.username, password: cmd.password)
+    usr.save()
+    [success: true]
+  }
+
+
+  def update(UserCommand cmd) {
 
 //
 //            hr.addiko.riznica.user.User.executeUpdate(
@@ -40,14 +40,14 @@ class UserService extends GrichRegistryDataController {
 //
 //
 //            [success: true]
-    }
+  }
 
-    def delete(UserCommand cmd) {
+  def delete(UserCommand cmd) {
 
-        User.findById(cmd.id).delete()
+    User.findById(cmd.id).delete()
 
-        [success: true]
-    }
+    [success: true]
+  }
 
 
 }

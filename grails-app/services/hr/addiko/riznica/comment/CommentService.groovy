@@ -10,67 +10,65 @@ import hr.addiko.riznica.post.Post
 @Transactional
 class CommentService {
 
-    SpringSecurityService springSecurityService
+  SpringSecurityService springSecurityService
 
 
+  def readAll() {
 
 
-    def readAll() {
+    def result = Comment.findAll()
 
+    HibernateUtils.initialize(result)
 
-        def result = Comment.findAll()
+    [success: true, data: result]
+  }
 
-        HibernateUtils.initialize(result)
+  def listByPostId(CommentCommand cmd) {
+    // User u = (User)springSecurityService.getCurrentUser()
 
-        [success: true, data: result]
-    }
+    def result = Comment.createCriteria().list {
 
-    def listByPostId(CommentCommand cmd){
-      // User u = (User)springSecurityService.getCurrentUser()
-
-        def result = Comment.createCriteria().list{
-
-            or {
-                eq("post",Post.findById(cmd.post.id))
+      or {
+        eq("post", Post.findById(cmd.post.id))
 // eq("user",User.findById(u.id))
-            }
-        }
-
-        [success: true, data: result]
+      }
     }
 
-    def create(CommentCommand cmd) {
-        User u = (User)springSecurityService.getCurrentUser()
+    [success: true, data: result]
+  }
 
-        Comment comment = new Comment(
-                author: u.username,
-                comment: cmd.comment,
-                user: u,
-                post: Post.findById(cmd.post.id))
-        comment.save()
-        [success: true]
-    }
+  def create(CommentCommand cmd) {
+    User u = (User) springSecurityService.getCurrentUser()
 
-
-    def update(CommentCommand cmd) {
-
-
-        Comment.executeUpdate(
-                "UPDATE Comment p SET " +
-                        "p.author=:newCommentAuthor, p.comment=:newComment, p.user=:newUser, p.post=:newPost" +
-                        "WHERE p.id=:id",
-                [newCommentAtuhor: cmd.author, newComment: cmd.comment, newUser: cmd.user, newPost: cmd.post, id: cmd.id]
-        )
+    Comment comment = new Comment(
+      author: u.username,
+      comment: cmd.comment,
+      user: u,
+      post: Post.findById(cmd.post.id))
+    comment.save()
+    [success: true]
+  }
 
 
-        [success: true]
-    }
+  def update(CommentCommand cmd) {
 
-    def delete(CommentCommand cmd) {
 
-        Post.findById(cmd.id).delete()
+    Comment.executeUpdate(
+      "UPDATE Comment p SET " +
+        "p.author=:newCommentAuthor, p.comment=:newComment, p.user=:newUser, p.post=:newPost" +
+        "WHERE p.id=:id",
+      [newCommentAtuhor: cmd.author, newComment: cmd.comment, newUser: cmd.user, newPost: cmd.post, id: cmd.id]
+    )
 
-        [success: true]
-    }
+
+    [success: true]
+  }
+
+  def delete(CommentCommand cmd) {
+
+    Post.findById(cmd.id).delete()
+
+    [success: true]
+  }
 
 }

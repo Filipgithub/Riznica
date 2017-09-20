@@ -4,16 +4,16 @@ import hr.addiko.riznica.post.Post
 
 class Category {
 
-    String name
+  String name
 
-    static  hasMany = [post:Post]
+  static hasMany = [post: Post]
 
-    static constraints = {
-        name nullable: true
-    }
+  static constraints = {
+    name nullable: true
+  }
 
-    static mapping = {
-        post cascade: 'all-delete-orphan'
-    }
+  static mapping = {
+    post cascade: 'all-delete-orphan'
+  }
 
 }

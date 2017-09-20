@@ -10,41 +10,40 @@ import hr.addiko.riznica.category.Category
 @Transactional
 class PostService {
 
-    SpringSecurityService springSecurityService
+  SpringSecurityService springSecurityService
 
-    def readAll(PostCommand cmd) {
+  def readAll(PostCommand cmd) {
 
-            //return result of search,if search is empty return all
-            def result = Post.createCriteria().list {
-                if(cmd.categoryName){
-                    'in'("category",Category.findAllByNameIlike("%${cmd.categoryName}%"))
-                }
-                if(cmd.postTitle){
-                    ilike("postTitle","%${cmd.postTitle}%")
-                }
-                if(cmd.userName) {
-                    'in'("user", User.findAllByUsernameIlike("%${cmd.userName}%"))
-                }
-            }
-
-
-
-            [success: true, data : result]
-
+    //return result of search,if search is empty return all
+    def result = Post.createCriteria().list {
+      if (cmd.categoryName) {
+        'in'("category", Category.findAllByNameIlike("%${cmd.categoryName}%"))
+      }
+      if (cmd.postTitle) {
+        ilike("postTitle", "%${cmd.postTitle}%")
+      }
+      if (cmd.userName) {
+        'in'("user", User.findAllByUsernameIlike("%${cmd.userName}%"))
+      }
     }
 
-    def create(PostCommand cmd){
-
-        User u = (User)springSecurityService.getCurrentUser()
 
 
-        Post post = new Post(user: u, postTitle: cmd.postTitle,
-                                postContent: cmd.postContent,category: Category.findById(cmd.postCategory.id),userName:u.username,
-                                    categoryName: Category.findById(cmd.postCategory.id).name)
-        post.save()
-        [success: true]
-    }
+    [success: true, data: result]
 
+  }
+
+  def create(PostCommand cmd) {
+
+    User u = (User) springSecurityService.getCurrentUser()
+
+
+    Post post = new Post(user: u, postTitle: cmd.postTitle,
+      postContent: cmd.postContent, category: Category.findById(cmd.postCategory.id), userName: u.username,
+      categoryName: Category.findById(cmd.postCategory.id).name)
+    post.save()
+    [success: true]
+  }
 
 //    def update(PostCommand cmd){
 //// def per = Person.get(cmd.id)
@@ -66,13 +65,12 @@ class PostService {
 //        [success: true]
 //    }
 
-    def delete(PostCommand cmd){
+  def delete(PostCommand cmd) {
 
-        Post.findById(cmd.id).delete()
+    Post.findById(cmd.id).delete()
 
-        [success: true]
-    }
-
+    [success: true]
+  }
 
 
 }

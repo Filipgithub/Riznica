@@ -27,61 +27,59 @@ Ext.define("riznica.moduleuser.view.ModuleUserView", {
             items: [
 
 
+                {xtype: "module-user-view-Person", itemId: "personGrid"}
 
-         {xtype: "module-user-view-Person", itemId: "personGrid"}
+                /*  {xtype:"button",text:"Add new user",
+                   handler:function () {
+                       Ext.create('Ext.form.Panel', {
+                           floating: true,
+                           centered: true,
+                           modal: true,
+                           renderTo: Ext.getBody(),
+                           title: 'User Form',
+                           height: 350,
+                           width: 300,
+                           bodyPadding: 10,
+                           defaultType: 'textfield',
+                           items: [
+                               {
+                                   fieldLabel: 'Name',
+                                   name: 'name'
+                               },
+                               {
+                                   fieldLabel: 'Password',
+                                   name: 'password'
+                               },
+                               {
+                                   xtype: 'button',
+                                   text: 'Save',
+                                   handler: function(thisEl){
+                                       grich.core.util.AjaxSubmitHelper.invokeRequest({
+                                           url: riznica.configuration.contextPath + "/api/person/create",
+                                           method: "POST",
+                                           jsonData: thisEl.up('form').getForm().getValues(),
+                                           // When data are received, add localFormConfigurationList to it if necessary.
+                                           success: function(response, options, responseJsonObject) {
+                                               //var localFormConfigurationList, i, arrayLength, formIdLocal, formFieldConfigurationList, formConfiguration, formConfigurationList;
+                                               //var convertedJsonObject = grich.core.form.ConstraintConversionService.convertResponseToExtjsFormConfiguration(responseJsonObject);
+                                               alert('korisnik sacuvan');
 
-             /*  {xtype:"button",text:"Add new user",
-                handler:function () {
-                    Ext.create('Ext.form.Panel', {
-                        floating: true,
-                        centered: true,
-                        modal: true,
-                        renderTo: Ext.getBody(),
-                        title: 'User Form',
-                        height: 350,
-                        width: 300,
-                        bodyPadding: 10,
-                        defaultType: 'textfield',
-                        items: [
-                            {
-                                fieldLabel: 'Name',
-                                name: 'name'
-                            },
-                            {
-                                fieldLabel: 'Password',
-                                name: 'password'
-                            },
-                            {
-                                xtype: 'button',
-                                text: 'Save',
-                                handler: function(thisEl){
-                                    grich.core.util.AjaxSubmitHelper.invokeRequest({
-                                        url: riznica.configuration.contextPath + "/api/person/create",
-                                        method: "POST",
-                                        jsonData: thisEl.up('form').getForm().getValues(),
-                                        // When data are received, add localFormConfigurationList to it if necessary.
-                                        success: function(response, options, responseJsonObject) {
-                                            //var localFormConfigurationList, i, arrayLength, formIdLocal, formFieldConfigurationList, formConfiguration, formConfigurationList;
-                                            //var convertedJsonObject = grich.core.form.ConstraintConversionService.convertResponseToExtjsFormConfiguration(responseJsonObject);
-                                            alert('korisnik sacuvan');
+                                           }
+                                       });
+                                   }
+                               },
+                               {
+                                   xtype: 'button',
+                                   text: 'Cancel',
+                                   handler: function () {
 
-                                        }
-                                    });
-                                }
-                            },
-                            {
-                                xtype: 'button',
-                                text: 'Cancel',
-                                handler: function () {
+                                   }
+                               }
+                           ]
 
-                                }
-                            }
-                        ]
-
-                    });
-                }
-                }  */
-
+                       });
+                   }
+                   }  */
 
 
             ]
@@ -90,75 +88,75 @@ Ext.define("riznica.moduleuser.view.ModuleUserView", {
 
 
 
-       /* {
+        /* {
 
-            title: "Personnel",
-            iconCls: "fa-user",
-            bind: {
-                html: "{loremIpsum}"
-            }
-        },
-        {
-            title: "Groups",
-            iconCls: "fa-users",
-            bind: {
-                html: "{loremIpsum}"
-            }
-        },
-        {
-            title: "Settings",
-            iconCls: "fa-cog",
-            bind: {
-            html: "{loremIpsum}"
-            }
-         }*/
+             title: "Personnel",
+             iconCls: "fa-user",
+             bind: {
+                 html: "{loremIpsum}"
+             }
+         },
+         {
+             title: "Groups",
+             iconCls: "fa-users",
+             bind: {
+                 html: "{loremIpsum}"
+             }
+         },
+         {
+             title: "Settings",
+             iconCls: "fa-cog",
+             bind: {
+             html: "{loremIpsum}"
+             }
+          }*/
 
-        ],
-  /*  initComponent: function() {
-        var me = this*/
+    ],
+    /*  initComponent: function() {
+          var me = this*/
 
 
-       // Ext.apply(me, {
-          //  items: [
-                // {
-                //     title: "Home",
-                //     iconCls: "fa-home",
-                //
-                //     // The following grid shares a store with the modern version's grid as well.
-                //     items: [
-                //
-               // {xtype: "module-user-view-Person", itemId: "personGrid"},
+    // Ext.apply(me, {
+    //  items: [
+    // {
+    //     title: "Home",
+    //     iconCls: "fa-home",
+    //
+    //     // The following grid shares a store with the modern version's grid as well.
+    //     items: [
+    //
+    // {xtype: "module-user-view-Person", itemId: "personGrid"},
 
-              //  {xtype: "button", text: "Add"}
+    //  {xtype: "button", text: "Add"}
 
-                //     ]
-                // },
-                // {
-                //     title: "Personnel",
-                //     iconCls: "fa-user",
-                //     bind: {
-                //         html: "{loremIpsum}"
-                //     }
-                // },
-                // {
-                //     title: "Groups",
-                //     iconCls: "fa-users",
-                //     bind: {
-                //         html: "{loremIpsum}"
-                //     }
-                // },
-                // {
-                //     title: "Settings",
-                //     iconCls: "fa-cog",
-                //     bind: {
-                //         html: "{loremIpsum}"
-                //     }
-                // }
-         //   ]
-       // });
-     //   me.callParent(arguments);
-        //me.down('#personGrid').getStore().load();
-  //  },*/
+    //     ]
+    // },
+    // {
+    //     title: "Personnel",
+    //     iconCls: "fa-user",
+    //     bind: {
+    //         html: "{loremIpsum}"
+    //     }
+    // },
+    // {
+    //     title: "Groups",
+    //     iconCls: "fa-users",
+    //     bind: {
+    //         html: "{loremIpsum}"
+    //     }
+    // },
+    // {
+    //     title: "Settings",
+    //     iconCls: "fa-cog",
+    //     bind: {
+    //         html: "{loremIpsum}"
+    //     }
+    // }
+    //   ]
+    // });
+    //   me.callParent(arguments);
+    //me.down('#personGrid').getStore().load();
+    //  },*/
 
 
     ui: "navigation",

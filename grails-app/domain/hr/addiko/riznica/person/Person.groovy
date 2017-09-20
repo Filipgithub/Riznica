@@ -2,12 +2,12 @@ package hr.addiko.riznica.person
 
 class Person {
 
-    Long id
-    String name
-    String password
+  Long id
+  String name
+  String password
 
-    static constraints = {
-        name blank: false
-        password blank: false
-    }
+  static constraints = {
+    name blank: false
+    password blank: false
+  }
 }

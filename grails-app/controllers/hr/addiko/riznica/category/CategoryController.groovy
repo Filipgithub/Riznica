@@ -7,28 +7,28 @@ import hr.addiko.riznica.core.command.CategoryCommand
 
 
 @Transactional
-class CategoryController extends GrichRegistryDataController  {
+class CategoryController extends GrichRegistryDataController {
 
-    CategoryService categoryService
+  CategoryService categoryService
 
-    def readAll() {
-        BaseSearchCommand cmd = new BaseSearchCommand()
-        cmd.limit = 0
-        cmd.start = 0
-        validateCallAndRender(cmd,{categoryService.readAll()})
-    }
+  def readAll() {
+    BaseSearchCommand cmd = new BaseSearchCommand()
+    cmd.limit = 0
+    cmd.start = 0
+    validateCallAndRender(cmd, { categoryService.readAll() })
+  }
 
-    def create(CategoryCommand cmd){
-        validateCallAndRender(cmd, { categoryService.create(cmd) })
-    }
+  def create(CategoryCommand cmd) {
+    validateCallAndRender(cmd, { categoryService.create(cmd) })
+  }
 
-    def update(CategoryCommand cmd){
-        validateCallAndRender(cmd, { categoryService.update(cmd) })
-    }
+  def update(CategoryCommand cmd) {
+    validateCallAndRender(cmd, { categoryService.update(cmd) })
+  }
 
-    def delete(CategoryCommand cmd){
-        validateCallAndRender(cmd, { categoryService.delete(cmd) })
+  def delete(CategoryCommand cmd) {
+    validateCallAndRender(cmd, { categoryService.delete(cmd) })
 
-    }
+  }
 
 }

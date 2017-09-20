@@ -6,20 +6,20 @@ import hr.addiko.riznica.core.command.CategoryCommand
 @Transactional
 class CategoryService {
 
-    def readAll() {
-        def result = Category.findAll()
-        [success: true, data: result]
-    }
+  def readAll() {
+    def result = Category.findAll()
+    [success: true, data: result]
+  }
 
-    def create(CategoryCommand cmd){
+  def create(CategoryCommand cmd) {
 
-        Category category = new Category(name: cmd.name)
-        category.save()
+    Category category = new Category(name: cmd.name)
+    category.save()
 
-        [success: true]
-    }
+    [success: true]
+  }
 
-    def update(CategoryCommand cmd){
+  def update(CategoryCommand cmd) {
 
 //        Category.executeUpdate(
 //                "UPDATE category p SET " +
@@ -27,19 +27,19 @@ class CategoryService {
 //                [newname:cmd.name,id:cmd.id]
 //        )
 
-            def cate = Category.get(cmd.id)
-            cate.name = cmd.name
-            cate.save(flush: true)
+    def cate = Category.get(cmd.id)
+    cate.name = cmd.name
+    cate.save(flush: true)
 
 
 
-        [success: true]
-    }
+    [success: true]
+  }
 
-    def delete(CategoryCommand cmd){
+  def delete(CategoryCommand cmd) {
 
-        Category.findById(cmd.id).delete()
+    Category.findById(cmd.id).delete()
 
-        [success: true]
-    }
+    [success: true]
+  }
 }

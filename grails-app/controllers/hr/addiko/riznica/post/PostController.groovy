@@ -6,29 +6,28 @@ import grails.transaction.Transactional
 import hr.addiko.riznica.core.command.PostCommand
 
 @Transactional
-class PostController extends GrichRegistryDataController  {
+class PostController extends GrichRegistryDataController {
 
-    PostService postService
+  PostService postService
 
-    def readAll(PostCommand cmd) {
+  def readAll(PostCommand cmd) {
 
-        validateCallAndRender(cmd, {postService.readAll(cmd)})
+    validateCallAndRender(cmd, { postService.readAll(cmd) })
 
-    }
+  }
 
-    def create(PostCommand cmd){
-        validateCallAndRender(cmd, { postService.create(cmd) })
-    }
+  def create(PostCommand cmd) {
+    validateCallAndRender(cmd, { postService.create(cmd) })
+  }
 
-    def update(PostCommand cmd){
-        validateCallAndRender(cmd, { postService.update(cmd) })
-    }
+  def update(PostCommand cmd) {
+    validateCallAndRender(cmd, { postService.update(cmd) })
+  }
 
-    def delete(PostCommand cmd){
-        validateCallAndRender(cmd, { postService.delete(cmd) })
+  def delete(PostCommand cmd) {
+    validateCallAndRender(cmd, { postService.delete(cmd) })
 
-    }
-
+  }
 
 
 }

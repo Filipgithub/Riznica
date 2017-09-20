@@ -6,18 +6,18 @@ import hr.addiko.riznica.post.Post
 
 class CommentCommand implements Validateable {
 
-    Long id
-    String author
-    String comment
-    User user
-    Post post
+  Long id
+  String author
+  String comment
+  User user
+  Post post
 
 
-    static constraints = {
-        id nullable: true
-        author nullable: true
-        comment nullable: true
-        user nullable: true
-        post nullable: false
-    }
+  static constraints = {
+    id nullable: true
+    author nullable: true
+    comment nullable: true
+    user nullable: true
+    post nullable: false
+  }
 }

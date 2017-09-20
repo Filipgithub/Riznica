@@ -7,7 +7,7 @@ Ext.define("riznica.moduleuser.person.view.PersonView", {
 
     requires: [
         "riznica.moduleuser.person.store.PersonStore",
-      //  "riznica.samplemodule.personnel.view.PersonnelViewController"
+        //  "riznica.samplemodule.personnel.view.PersonnelViewController"
     ],
 
     title: "Users",
@@ -20,14 +20,11 @@ Ext.define("riznica.moduleuser.person.view.PersonView", {
 
 
     columns: [
-        { text: "User name", dataIndex: "name" },
-        { text: "Password", dataIndex: "password", flex: 1 },
+        {text: "User name", dataIndex: "name"},
+        {text: "Password", dataIndex: "password", flex: 1},
 
 
     ],
-
- 
-
 
 
 });
