@@ -242,6 +242,17 @@ Ext.define('riznica.main.view.MainView', {
                 {
                   //add new post
                   xtype: 'button',
+                  text: "New order",
+                  style: 'margin: 0px 50px 0px 0px',
+                  listeners: {
+                    //on click listener -add new post button
+                    click: "newOrder"
+                  }
+
+                },
+                {
+                  //add new post
+                  xtype: 'button',
                   text: "Add new post",
                   style: 'margin: 0px 50px 0px 0px',
                   listeners: {
@@ -396,6 +407,9 @@ Ext.define('riznica.main.view.MainView', {
                         xtype: 'panel',
                         width: "100%",
                         title: "Recent posts",
+                        height:400,
+                        scrollable: true,
+                        flex:1,
                         items: [{
                           xtype: 'post-view-post'
                         }
@@ -411,7 +425,21 @@ Ext.define('riznica.main.view.MainView', {
                           }
                         ]
 
-                      }],
+                      },
+                      {
+                        //grid panel with recently added orders
+                        xtype: 'panel',
+                        width: "100%",
+                        height:400,
+                        title: "Order preview",
+                        flex: 1,
+                        scrollable: true,
+                        items: [{
+                          xtype:"order-view-grid",
+                          itemId: "order-view-grid-id"
+                        }]
+                      }
+                    ],
                     region: "center"
 
                   }],

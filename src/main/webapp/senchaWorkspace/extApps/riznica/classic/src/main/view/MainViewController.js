@@ -321,6 +321,9 @@ Ext.define('riznica.main.view.MainViewController', {
     Ext.create('riznica.add.user.view.AddUserView');
   },
 
+  newOrder:function() {
+    Ext.create("riznica.order.view.OrderView");
+  },
 
   onMainTabPanelTabChange: function(tabPanel, newTab) {
     var me = this;
