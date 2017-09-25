@@ -27,9 +27,9 @@ class CommentService {
     // User u = (User)springSecurityService.getCurrentUser()
 
     def result = Comment.createCriteria().list {
-
+     // createAlias("post", "post")
       or {
-        eq("post", Post.findById(cmd.post.id))
+        eq("post.id", cmd.postId)
 // eq("user",User.findById(u.id))
       }
     }

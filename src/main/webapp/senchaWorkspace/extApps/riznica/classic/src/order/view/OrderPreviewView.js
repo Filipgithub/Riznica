@@ -11,7 +11,7 @@ Ext.define("riznica.order.view.OrderPreviewView", {
   title: 'Order',
   autoScroll: true,
   width: 400,
-  height: 400,
+  height: 200,
   closeAction: 'hide',
 
   requires: [
@@ -32,7 +32,11 @@ Ext.define("riznica.order.view.OrderPreviewView", {
               bind: { value: '{entity.userName}' }
             },
             {
-              xtype: 'textfield', itemId: "restaurantNameId", name: "restaurantName", fieldLabel: "Restaurant", readOnly: true,
+              xtype: 'textfield',
+              itemId: "restaurantNameId",
+              name: "restaurantName",
+              fieldLabel: "Restaurant",
+              readOnly: true,
               bind: { value: '{entity.restaurantName}' }
             },
 

@@ -9,87 +9,11 @@ Ext.define("riznica.post.view.PostViewController", {
     Ext.ComponentQuery.query("#post-view-postId")[0].getSelectionModel().deselectAll(true);
 
 
-    var post = Ext.ComponentQuery.query("#post-view-postId")[0].getStore().getAt(rowIndex).data;
+   // var post = Ext.ComponentQuery.query("#post-view-postId")[0].getStore().getAt(rowIndex).data;
+      var preview = Ext.create("riznica.post.view.PostPreview");
+      preview.getViewModel().data.entity = record.data;
+      preview.show();
 
-
-    console.log(post);
-    var win = new Ext.Window({
-      itemId: "postFormId",
-      title: post.postTitle,
-      layout: 'fit',
-      autoScroll: true,
-      y: 60,
-      width: 600,
-      height: 630,
-      modal: true,
-
-      items: [
-        {
-          style: 'margin: 5px 5px 5px 5px',
-          layout: {
-            type: "vbox",
-            pack: 'start',
-            align: 'center'
-          },
-
-          items: [
-            {
-              xtype: 'form', width: 600,
-              height: 600, items: [
-              { xtype: 'textfield', name: 'id', value: post.id, hidden: true },
-              {
-                xtype: 'textfield',
-                readOnly: true,
-                fieldLabel: 'Post Author',
-                name: 'postAuthor',
-                value: post.user.username
-              },
-              {
-                xtype: 'textfield',
-                readOnly: true,
-                fieldLabel: 'Post Category',
-                name: 'postCategory',
-                value: post.category.name
-              },
-
-              {
-                xtype: 'textarea',
-                readOnly: true,
-                itemId: 'content',
-                name: 'postContent',
-                width: "80%",
-                height: 250,
-                fieldLabel: 'Post Content',
-                value: post.postContent
-
-              },
-              {
-                xtype: "comment-view-comment",
-                listeners: {
-                  afterrender: function(thisEl) {
-
-
-                    thisEl.getStore().getProxy().extraParams = {
-                      post: thisEl.up('form').getForm().getValues().id
-                    };
-                    thisEl.getStore().load();
-
-                    //  console.log("xxx");
-                    console.log(thisEl.getStore());
-                  }
-                }
-
-
-              }
-            ]
-            }
-          ]
-        }
-      ]
-
-
-    });
-    win.show();
   },
   onClickItemContextMenuPost: function(tree, record, item, index, e, eOpts) {
     // Optimize : create menu once

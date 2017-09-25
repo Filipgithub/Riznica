@@ -13,15 +13,8 @@ Ext.define("riznica.category.view.CategoryView", {
     type: "category-Store"
   },
 
-  columns: [
-    {
-      text: "Name",
-      dataIndex: "name",
-      width: "100%"
-    }
+  columns: [{text: "Name",width: "100%",dataIndex: "name"}],
 
-  ]
-  ,
   tools: [{
     type: 'plus',
     handler: function() {
@@ -36,7 +29,9 @@ Ext.define("riznica.category.view.CategoryView", {
   }],
 
   listeners: {
+
     cellclick: "onCategoryClick",
+
     //edit or delete selected category
     itemcontextmenu: "onClickItemContextMenuCategory"
   }

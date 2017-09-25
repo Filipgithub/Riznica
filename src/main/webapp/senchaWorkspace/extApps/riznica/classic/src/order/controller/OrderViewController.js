@@ -26,7 +26,6 @@ Ext.define("riznica.order.controller.OrderViewController", {
           thisEl.up('#order-view-id').close();
 
 
-
           grich.core.util.NotificationUtils.showSuccessNotification(notificationDescriptor);
 
           Ext.ComponentQuery.query("#order-view-grid-id")[0].getStore().load();
@@ -38,11 +37,10 @@ Ext.define("riznica.order.controller.OrderViewController", {
 
 
   },
-  
-  onOrderClick:function(thisEl, td, cellIndex, record, tr, rowIndex) {
+
+  onOrderClick: function(thisEl, td, cellIndex, record, tr, rowIndex) {
     Ext.ComponentQuery.query("#order-view-grid-id")[0].getSelectionModel().deselectAll(true);
     var preview = Ext.create('riznica.order.view.OrderPreviewView');
-    debugger;
     preview.getViewModel().data.entity = record.data;
     preview.show();
   }

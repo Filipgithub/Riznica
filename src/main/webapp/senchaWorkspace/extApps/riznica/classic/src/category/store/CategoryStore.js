@@ -6,7 +6,11 @@ Ext.define("riznica.category.store.CategoryStore", {
   autoLoad: true,
   autoSync: true,
 
-  fields: ["name"],
+  requires: [
+    "riznica.category.model.CategoryModel"
+  ],
+
+  model: "riznica.category.model.CategoryModel",
 
 
   proxy: {

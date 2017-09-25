@@ -11,6 +11,7 @@ class CommentCommand implements Validateable {
   String comment
   User user
   Post post
+  Long postId
 
 
   static constraints = {
@@ -18,6 +19,7 @@ class CommentCommand implements Validateable {
     author nullable: true
     comment nullable: true
     user nullable: true
-    post nullable: false
+    post nullable: true
+    postId nullable: true
   }
 }

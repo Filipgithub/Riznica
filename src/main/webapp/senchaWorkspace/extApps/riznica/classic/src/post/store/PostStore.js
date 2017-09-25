@@ -6,7 +6,12 @@ Ext.define("riznica.post.store.PostStore", {
   autoLoad: true,
   autoSync: true,
 
-  fields: ["postTitle", "postContent"],
+  //fields: ["postTitle", "postContent"],
+  requires: [
+    "riznica.post.model.PostModel"
+  ],
+
+  model: "riznica.post.model.PostModel",
 
 
   proxy: {

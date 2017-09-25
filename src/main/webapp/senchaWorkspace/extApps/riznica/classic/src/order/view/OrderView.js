@@ -5,7 +5,7 @@ Ext.define("riznica.order.view.OrderView", {
   xtype: "order",
   itemId: "order-view-id",
   controller: "OrderViewController",
- // viewModel: { type: "order-OrderViewModel" },
+  // viewModel: { type: "order-OrderViewModel" },
   autoShow: true,
   modal: true,
   layout: "fit",

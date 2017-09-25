@@ -22,8 +22,8 @@ Ext.define("riznica.order.view.OrderGridView", {
 
 
   columns: [
-    { text:"Client", dataIndex:"userName", flex:1 },
-    { text:"Restaurant", dataIndex:"restaurantName", flex:1 }
+    { text: "Client", dataIndex: "userName", flex: 1 },
+    { text: "Restaurant", dataIndex: "restaurantName", flex: 1 }
 
 
   ],
