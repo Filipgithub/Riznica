@@ -14,8 +14,7 @@ Ext.define("riznica.post.view.PostPreview", {
   modal: true,
   listeners: {
     boxready: function(thisEl) {
-      debugger;
-      var id = this.getViewModel().data.entity.id;
+      var id = thisEl.getViewModel().data.entity.id;
       var commentsStore = this.down("#comments").getStore();
       commentsStore.proxy.extraParams = {
         postId: id
@@ -83,8 +82,6 @@ Ext.define("riznica.post.view.PostPreview", {
             xtype: "comment-view-comment",
             itemId: "comments"
           }
-
-
         ]
         }
       ]

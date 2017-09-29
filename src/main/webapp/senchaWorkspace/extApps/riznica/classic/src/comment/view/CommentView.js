@@ -25,11 +25,21 @@ Ext.define("riznica.comment.view.CommentView", {
       {
         text: "Author",
         dataIndex: "author",
-        flex: 1
+        flex: 2
       },
       {
         text: "Comment",
         dataIndex: "comment",
+        flex: 3
+      },
+      {
+        text: "Date",
+        dataIndex: "simpleDate",
+        flex: 3
+      },
+      {
+        text: "Time",
+        dataIndex: "simpleTime",
         flex: 3
       }
     ],

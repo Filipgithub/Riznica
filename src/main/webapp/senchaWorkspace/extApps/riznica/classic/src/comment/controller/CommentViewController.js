@@ -19,13 +19,18 @@ Ext.define("riznica.comment.controller.CommentViewController", {
       async: false,
       success: function(response, options, responseTextDecoded) {
         if (responseTextDecoded.success === true) {
-          //debugger;
-          // Ext.ComponentQuery.query('#post-view-postId')[0].getStore().load();
-          //  alert("New user saved!");
-          //  Ext.ComponentQuery.query('#comment-view-commentId')[0].getStore().load();
+          debugger;
+          var notificationDescriptor = {
+            notification: {
+              severity: grich.core.util.NotificationUtils.NOTIFICATION_SEVERITY_INFO,
+              titleText: "Comment saved!!!",
+              contentText: "Success"
 
+            }
+          };
           thisEl.up('#addcommwin').close();
-          Ext.ComponentQuery.query("#comment-view-commentId")[0].getStore().load()
+          grich.core.util.NotificationUtils.showSuccessNotification(notificationDescriptor);
+
         }
       }
 

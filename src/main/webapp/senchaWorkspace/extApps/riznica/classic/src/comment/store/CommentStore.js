@@ -6,7 +6,7 @@ Ext.define("riznica.comment.store.CommentStore", {
   autoLoad: true,
   autoSync: true,
 
-  fields: ["author", "comment"],
+  fields: ["author", "comment","simpleDate","simpleTime"],
 
 
   proxy: {
