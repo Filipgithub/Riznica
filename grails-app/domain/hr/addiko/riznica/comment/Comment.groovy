@@ -8,9 +8,9 @@ import java.text.SimpleDateFormat
 class Comment {
 
   String author
-  //TODO dodati simple date format kao vrijeme kad je kreiran komentar
   String comment
-
+  String simpleDate
+  String simpleTime
   User user
   Post post
 

@@ -7,6 +7,8 @@ import hr.addiko.riznica.User
 import hr.addiko.riznica.core.command.CommentCommand
 import hr.addiko.riznica.post.Post
 
+import java.text.SimpleDateFormat
+
 @Transactional
 class CommentService {
 
@@ -27,7 +29,6 @@ class CommentService {
     // User u = (User)springSecurityService.getCurrentUser()
 
     def result = Comment.createCriteria().list {
-     // createAlias("post", "post")
       or {
         eq("post.id", cmd.postId)
 // eq("user",User.findById(u.id))
@@ -39,12 +40,18 @@ class CommentService {
 
   def create(CommentCommand cmd) {
     User u = (User) springSecurityService.getCurrentUser()
+    String pattern = "dd.MM.yyyy HH:mm:ss"
+    SimpleDateFormat format = new SimpleDateFormat(pattern)
+    String sdf = format.format(new Date())
+
 
     Comment comment = new Comment(
       author: u.username,
       comment: cmd.comment,
       user: u,
-      post: Post.findById(cmd.post.id))
+      post: Post.findById(cmd.post.id),
+      simpleDate: sdf.split(" ")[0],
+      simpleTime: sdf.split(" ")[1])
     comment.save()
     [success: true]
   }

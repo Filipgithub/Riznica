@@ -41,13 +41,13 @@ class BootStrap {
     }
 
     5.times {
-      new Comment(author: User.findById(1).username, comment: "First comment", user: User.findById(1), post: Post.findById(1)).save(flush: true, failOnError: true)
+      new Comment(author: User.findById(1).username, comment: "First comment", user: User.findById(1), post: Post.findById(1),simpleDate:"12.09.2017",simpleTime:"14:51:02").save(flush: true, failOnError: true)
     }
     5.times {
-      new Comment(author: User.findById(1).username, comment: "Second comment", user: User.findById(1), post: Post.findById(3)).save(flush: true, failOnError: true)
+      new Comment(author: User.findById(1).username, comment: "Second comment", user: User.findById(1), post: Post.findById(3),simpleDate:"12.09.2017",simpleTime:"14:51:02").save(flush: true, failOnError: true)
     }
     5.times {
-      new Comment(author: User.findById(3).username, comment: "Third comment", user: User.findById(2), post: Post.findById(5)).save(flush: true, failOnError: true)
+      new Comment(author: User.findById(3).username, comment: "Third comment", user: User.findById(2), post: Post.findById(5),simpleDate:"12.09.2017",simpleTime:"14:51:02").save(flush: true, failOnError: true)
     }
 
 
