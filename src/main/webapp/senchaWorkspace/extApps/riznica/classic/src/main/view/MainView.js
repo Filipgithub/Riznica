@@ -50,11 +50,12 @@ Ext.define('riznica.main.view.MainView', {
 
   config: {
     topToolbarHeight: 150,
-    homeAutoNavigate: true
+    homeAutoNavigate: true,
   },
 
   initComponent: function() {
     var me = this;
+    riznica.main.view.MainViewUtils.uploadDocument = null;
     var i, arrayLength;
     var radioGroupValue = "category";
 
@@ -80,6 +81,7 @@ Ext.define('riznica.main.view.MainView', {
     var topLevelNavigationTreeStoreId = 'main.store.TopLevelNavigationTreeStore';
 
     var themeName, themeDisplayName, isCurrentTheme;
+
 
     // construct language menu -- start
     arrayLength = localeCodeSupportedList.length;
@@ -239,11 +241,77 @@ Ext.define('riznica.main.view.MainView', {
 
 
                 },
+                //upload image
+                { xtype:'fileuploadfield',
+                  title: 'Upload file',
+                  width: 400,
+                  bodyPadding: 10,
+                  style:"margine 50px 20px 10px 5px",
+                  frame: true,
+                  renderTo: Ext.getBody(),
+                  items: [{
+                    xtype: 'filefield',
+                    name: 'photo',
+                    fieldLabel: 'Photo',
+                    labelWidth: 50,
+                    msgTarget: 'side',
+                    allowBlank: false,
+                    anchor: '100%',
+                    buttonText: 'Select file...'
+                  }],
+                  listeners: {
+                    change: function() {
+                      // var title = this.up('form').down('#productTitle').getValue();
+                      // var title = this.up().up().getStore();
+                      // var path = this.getValue();
+                      // var name = this.getValue().replace(/^.*[\\\/]/, '');
+                      var file = this.getEl().down('input[type=file]').dom.files[0];
+
+                      var fileReader = new FileReader();
+                      fileReader.addEventListener("load", function() {
+
+                       // var record = Ext.create("riznica.product.model.DocumentModel",
+                         // { image: fileReader.result });
+                        riznica.main.view.MainViewUtils.uploadDocument = fileReader.result;
+                      }, false);
+
+                      if (file != null) {
+                        fileReader.readAsDataURL(file);
+                      }
+                    },
+                    afterrender: function(cmp) {
+                      cmp.fileInputEl.set({
+                        accept: 'image/*,application/pdf'
+                      });
+                    }
+                  }
+                },
+                {
+                  //add new post
+                  xtype: 'button',
+                  text: "Send file",
+                  margin: '5 5 5 5',
+                  listeners: {
+                    //on click listener -add new post button
+                    click: "sendImage"
+                  }
+                },
+                {
+                  //add new post
+                  xtype: 'button',
+                  text: "Get file",
+                  margin: '5 5 5 5',
+                  listeners: {
+                    //on click listener -add new post button
+                    click: "getImage"
+                  }
+
+                },
                 {
                   //add new post
                   xtype: 'button',
                   text: "New order",
-                  style: 'margin: 0px 50px 0px 0px',
+                  margin: '5 5 5 5',
                   listeners: {
                     //on click listener -add new post button
                     click: "newOrder"
@@ -254,7 +322,7 @@ Ext.define('riznica.main.view.MainView', {
                   //add new post
                   xtype: 'button',
                   text: "Add new post",
-                  style: 'margin: 0px 50px 0px 0px',
+                  margin: "5 5 5 5",
                   listeners: {
                     //on click listener -add new post button
                     click: "addNewPost"
@@ -265,7 +333,7 @@ Ext.define('riznica.main.view.MainView', {
                   //adding new User
                   xtype: 'button',
                   text: "Add new user",
-                  style: "margin 0px 0px 0px 0px",
+                  margin: "5 5 5 5",
                   handler: "onClickAddUser",
                   align: "right"
                 },
@@ -407,9 +475,9 @@ Ext.define('riznica.main.view.MainView', {
                         xtype: 'panel',
                         width: "100%",
                         title: "Recent posts",
-                        height:400,
+                        height: 400,
                         scrollable: true,
-                        flex:1,
+                        flex: 1,
                         items: [{
                           xtype: 'post-view-post'
                         }
@@ -430,16 +498,16 @@ Ext.define('riznica.main.view.MainView', {
                         //grid panel with recently added orders
                         xtype: 'panel',
                         width: "100%",
-                        height:400,
+                        height: 400,
                         title: "Order preview",
                         flex: 1,
                         scrollable: true,
                         items: [{
-                          xtype:"order-view-grid",
+                          xtype: "order-view-grid",
                           itemId: "order-view-grid-id"
                         }]
                       }
-                    ],
+                                         ],
                     region: "center"
 
                   }],
