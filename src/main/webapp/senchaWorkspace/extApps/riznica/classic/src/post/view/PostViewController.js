@@ -44,7 +44,6 @@ Ext.define("riznica.post.view.PostViewController", {
                           severity: grich.core.util.NotificationUtils.NOTIFICATION_SEVERITY_INFO,
                           titleText: "Category deleted!!!",
                           contentText: "Success"
-
                         }
                       };
                       Ext.ComponentQuery.query('#post-view-postId')[0].getStore().load();

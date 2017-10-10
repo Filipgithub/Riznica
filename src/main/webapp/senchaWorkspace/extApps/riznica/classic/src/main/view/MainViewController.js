@@ -232,7 +232,6 @@ Ext.define('riznica.main.view.MainViewController', {
                 displayField: 'name',
                 name: 'postCategory',
                 valueField: 'id'
-
               },
 
               {
@@ -415,7 +414,7 @@ Ext.define('riznica.main.view.MainViewController', {
           //alert("success");
           if (responseTextDecoded.success === true) {
             //open image from database in new window
-            let pdfWindow = window.open("");
+            var pdfWindow = window.open("");
             pdfWindow.document.write("<iframe width='100%' height='100%' src='" + responseTextDecoded.data.image + "'></iframe>")
 
             var notificationDescriptor = {

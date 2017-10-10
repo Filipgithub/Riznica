@@ -1,4 +1,4 @@
-Ext.define("riznica.order.view.OrderPreviewView", {
+  Ext.define("riznica.order.view.OrderPreviewView", {
 
   extend: "Ext.window.Window",
 

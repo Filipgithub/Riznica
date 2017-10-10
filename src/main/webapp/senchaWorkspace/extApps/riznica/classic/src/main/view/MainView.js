@@ -470,42 +470,46 @@ Ext.define('riznica.main.view.MainView', {
                   items: [{
                     layout: { type: 'vbox' },
                     items: [
+                      // {
+                      //   //grid panel with recently added posts
+                      //   xtype: 'panel',
+                      //   width: "100%",
+                      //   title: "Recent posts",
+                      //   height: 400,
+                      //   scrollable: true,
+                      //   flex: 1,
+                      //   items: [{
+                      //     xtype: 'post-view-post'
+                      //   }
+                      //   ],
+                      //   tools: [
+                      //     {
+                      //       xtype: 'button',
+                      //       iconCls: "x-fa fa-refresh",
+                      //       // iconAlign: 'right',
+                      //       handler: function() {
+                      //         Ext.ComponentQuery.query("#post-view-postId")[0].getStore().load();
+                      //       }
+                      //     }
+                      //   ]
+                      //
+                      // },
+                      // {
+                      //   //grid panel with recently added orders
+                      //   xtype: 'panel',
+                      //   width: "100%",
+                      //   height: 500,
+                      //   title: "Advanced search preview",
+                      //   flex: 1,
+                      //   scrollable: true,
+                      //   items: [{
+                      //     // xtype: "order-view-grid",
+                      //     // itemId: "order-view-grid-id"
+                      //     xtype: "reports-vacation-view-VacationStatusReportFormView"
+                      //   }]
+                      // }
                       {
-                        //grid panel with recently added posts
-                        xtype: 'panel',
-                        width: "100%",
-                        title: "Recent posts",
-                        height: 400,
-                        scrollable: true,
-                        flex: 1,
-                        items: [{
-                          xtype: 'post-view-post'
-                        }
-                        ],
-                        tools: [
-                          {
-                            xtype: 'button',
-                            iconCls: "x-fa fa-refresh",
-                            // iconAlign: 'right',
-                            handler: function() {
-                              Ext.ComponentQuery.query("#post-view-postId")[0].getStore().load();
-                            }
-                          }
-                        ]
-
-                      },
-                      {
-                        //grid panel with recently added orders
-                        xtype: 'panel',
-                        width: "100%",
-                        height: 400,
-                        title: "Order preview",
-                        flex: 1,
-                        scrollable: true,
-                        items: [{
-                          xtype: "order-view-grid",
-                          itemId: "order-view-grid-id"
-                        }]
+                        xtype:'order-OrderSearchView',width:"100%"
                       }
                                          ],
                     region: "center"
