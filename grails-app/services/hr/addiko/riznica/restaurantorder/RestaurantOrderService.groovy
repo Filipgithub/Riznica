@@ -1,5 +1,6 @@
 package hr.addiko.riznica.restaurantorder
 
+import grails.plugin.grich.search.service.AdvancedSearchService
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.transaction.Transactional
 import hr.addiko.riznica.User
@@ -11,6 +12,7 @@ import java.text.SimpleDateFormat
 class RestaurantOrderService {
 
     SpringSecurityService springSecurityService
+    AdvancedSearchService advancedSearchService
 
     def create(RestaurantOrderCommand cmd) {
 
@@ -30,10 +32,43 @@ class RestaurantOrderService {
         [success: true]
     }
 
-    def read() {
+    def read(RestaurantOrderCommand cmd) {
 
-        def result = RestaurantOrder.findAll()
+        def result = RestaurantOrder.createCriteria().list({
+            or {
+                if(cmd.id)
+                    eq('id', cmd.id)
+                if(cmd.restaurantName)
+                    eq('restaurantName', cmd.restaurantName)
+            }
+        })
+
+
         [success: true, data: result]
 
     }
+
+    def readByOrderFood(RestaurantOrderCommand cmd){
+//        def result = RestaurantOrder.createCriteria().list {
+//            or {
+//                eq("orderFood", cmd.orderFood)
+//// eq("user",User.findById(u.id))
+//            }
+//        }
+
+        def additionalCriteria = {
+            or {
+                if(cmd.id)
+                    eq('id', cmd.id)
+               if(cmd.restaurantName)
+                    eq('restaurantName', cmd.restaurantName)
+            }
+
+        }
+        cmd.additionalCriteria = additionalCriteria
+        advancedSearchService.search(cmd)
+    }
+
+      //  [success: true, data: result]
+
 }

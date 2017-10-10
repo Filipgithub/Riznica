@@ -12,10 +12,11 @@ class RestaurantOrderController extends GrichRegistryDataController {
         validateCallAndRender(cmd, { RestaurantOrderService.create(cmd) })
     }
 
-    def read() {
-        BaseSearchCommand cmd = new BaseSearchCommand()
-        cmd.limit = 0
-        cmd.start = 0
-        validateCallAndRender(cmd, {RestaurantOrderService.read() })
+    def read(RestaurantOrderCommand cmd) {
+        validateCallAndRender(cmd, {RestaurantOrderService.read(cmd) })
+    }
+
+    def readByOrderFood(RestaurantOrderCommand cmd){
+    validateCallAndRender(cmd,{RestaurantOrderService.readByOrderFood(cmd)})
     }
 }
