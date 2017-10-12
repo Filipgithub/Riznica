@@ -6,6 +6,7 @@ import grails.plugin.grich.core.web.ConstrainedSessionLocaleResolver
 import hr.addiko.riznica.category.Category
 import hr.addiko.riznica.comment.Comment
 import hr.addiko.riznica.post.Post
+import hr.addiko.riznica.restaurantorder.RestaurantOrder
 import org.apache.commons.lang.LocaleUtils
 import grails.util.Environment
 import org.codehaus.groovy.tools.shell.Parsing
@@ -49,6 +50,10 @@ class BootStrap {
     5.times {
       new Comment(author: User.findById(3).username, comment: "Third comment", user: User.findById(2), post: Post.findById(5),simpleDate:"12.09.2017",simpleTime:"14:51:02").save(flush: true, failOnError: true)
     }
+
+//    5.times{
+//      new RestaurantOrder(restaurantName: "Restaurant"+(it+1),orderFood:"Some order"+(it+1),simpleDateFormat: "17.02.12",time:"14:02", user: User.findById(id:1),userName: "admin").save(flush: true, failOnError: true)
+//    }
 
 
   }
