@@ -486,7 +486,6 @@ Ext.define('riznica.main.view.MainView', {
                           {
                             xtype: 'button',
                             iconCls: "x-fa fa-refresh",
-                            // iconAlign: 'right',
                             handler: function() {
                               Ext.ComponentQuery.query("#post-view-postId")[0].getStore().load();
                             }
