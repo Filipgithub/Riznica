@@ -6,6 +6,8 @@ import grails.transaction.Transactional
 import hr.addiko.riznica.User
 import hr.addiko.riznica.core.command.UserCommand
 
+// uraditi iste stvari kao na drugim servisima
+
 @Transactional
 class UserService extends GrichRegistryDataController {
 

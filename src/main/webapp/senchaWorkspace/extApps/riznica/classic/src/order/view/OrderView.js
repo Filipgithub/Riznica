@@ -29,7 +29,7 @@ Ext.define("riznica.order.view.OrderView", {
           items: [
             { xtype: 'textfield', itemId: "restaurantNameId", name: "restaurantName", fieldLabel: "Restaurant" },
 
-            { xtype: 'textfield', itemId: "orderField", name: "orderFood", fieldLabel: "Order" },
+            { xtype: 'textfield', itemId: "orderField", name: "orderFood", fieldLabel: "Order" }, // popraviti trailing comma warnings
             {
               xtype: 'button', text: "Submit", itemId: "submitBttn",
               listeners: {

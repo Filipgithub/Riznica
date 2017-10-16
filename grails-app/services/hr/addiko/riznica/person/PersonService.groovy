@@ -8,11 +8,11 @@ class PersonService {
 
   def readAll() {
     def result = Person.findAll()
+
     [success: true, data: result]
   }
 
   def create(PersonCommand cmd) {
-
     Person person = new Person(name: cmd.name, password: cmd.password)
     person.save()
 
@@ -27,6 +27,7 @@ class PersonService {
 // per.save(flush: true)
 
 
+    // maknuti, napraviti koristenjem findById i onda save
     Person.executeUpdate(
       "UPDATE Person p SET " +
         "p.name=:newName, p.password=:newPassword" +
@@ -39,7 +40,6 @@ class PersonService {
   }
 
   def delete(PersonCommand cmd) {
-
     Person.findById(cmd.id).delete()
 
     [success: true]

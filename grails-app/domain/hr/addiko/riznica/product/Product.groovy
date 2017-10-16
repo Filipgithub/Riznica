@@ -3,6 +3,8 @@ package hr.addiko.riznica.product
 
 class Product {
 
+    // maknuti sve sto se ne koristi
+
     Long id
 //    String title
 //    String description

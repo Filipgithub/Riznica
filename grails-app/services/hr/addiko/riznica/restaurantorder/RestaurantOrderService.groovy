@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat
 
 @Transactional
 class RestaurantOrderService {
+// formatirati kod, izbaciti zakomentarisane linije
+
 
     SpringSecurityService springSecurityService
     AdvancedSearchService advancedSearchService

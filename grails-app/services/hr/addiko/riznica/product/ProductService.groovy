@@ -2,6 +2,7 @@ package hr.addiko.riznica.product
 
 import grails.transaction.Transactional
 import hr.addiko.riznica.core.command.ProductCommand
+// izbciti prazne linije, formatirati kod
 
 @Transactional
 class ProductService {

@@ -7,6 +7,7 @@ import hr.addiko.riznica.User
 import hr.addiko.riznica.core.command.PostCommand
 import hr.addiko.riznica.category.Category
 
+// formatirati kod, izbaciti importe koje se ne koriste, izbaciti suvisne prazne linije, izbaciti komentare koji ne sluze nicemu
 @Transactional
 class PostService {
 
