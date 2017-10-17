@@ -49,7 +49,7 @@ Ext.define('riznica.main.view.MainView', {
   },
 
   config: {
-    topToolbarHeight: 150,
+    topToolbarHeight: 50,
     homeAutoNavigate: true,
   },
 

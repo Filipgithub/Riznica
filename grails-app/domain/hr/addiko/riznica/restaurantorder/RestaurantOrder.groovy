@@ -23,6 +23,5 @@ class RestaurantOrder {
     }
     static mapping = {
         user lazy: false
-        simpleDateFormat lazy: false
     }
 }
