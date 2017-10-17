@@ -78,28 +78,8 @@ Ext.define("riznica.samplemodule.view.SampleModuleView", {
             items: [
                 {xtype: "samplemodule-personnel-view-PersonnelListView"}
             ]
-        },
-        {
-            title: "Personnel",
-            iconCls: "fa-user",
-            bind: {
-                html: "{loremIpsum}"
-            }
-        },
-        {
-            title: "Groups",
-            iconCls: "fa-users",
-            bind: {
-                html: "data 2"
-            }
-        },
-        {
-            title: "Settings",
-            iconCls: "fa-cog",
-            bind: {
-                html: "data 3"
-            }
         }
+
     ]
 
 

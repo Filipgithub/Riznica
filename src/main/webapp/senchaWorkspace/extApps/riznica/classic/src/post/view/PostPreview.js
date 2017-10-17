@@ -3,6 +3,7 @@ Ext.define("riznica.post.view.PostPreview", {
   extend: "Ext.window.Window",
 
   xtype: "postPreview",
+  alias: "post-Preview",
   itemId: "post-preview-id",
   // bind
   // title:"",

@@ -36,6 +36,7 @@ Ext.define("riznica.order.controller.OrderViewController", {
     });
 
 
+
   },
 
   onOrderClick: function(thisEl, td, cellIndex, record, tr, rowIndex) {
@@ -43,5 +44,10 @@ Ext.define("riznica.order.controller.OrderViewController", {
     preview.getViewModel().data.entity = record.data;
     Ext.ComponentQuery.query("#order-view-gridId")[0].getSelectionModel().deselectAll(true);
     preview.show();
+  },
+
+
+  newOrder: function() {
+    Ext.create("riznica.order.view.OrderView");
   }
 });

@@ -65,6 +65,7 @@ Ext.define("riznica.post.view.PostViewController", {
     e.stopEvent();
     menu_grid.showAt(position);
   }
+
 });
 
 

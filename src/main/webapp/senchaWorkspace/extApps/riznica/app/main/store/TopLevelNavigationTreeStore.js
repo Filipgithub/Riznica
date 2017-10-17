@@ -10,8 +10,11 @@ Ext.define('riznica.main.store.TopLevelNavigationTreeStore', {
       expanded: true,
 
       children: [
-         // { text: 'Demo', topLevelRouteId: 'riznica', iconCls: 'x-fa fa-search', leaf: true, viewConfig: { xtype: 'samplemodule-view-SampleModuleView' } },
-         // {xtype:"search-view-category",title:"Search"}
+          { text: 'Posts and Orders', topLevelRouteId: 'post', iconCls: 'x-fa fa-search', leaf: true, viewConfig: { xtype: 'post-tab-post' } },
+          { text: 'Order', topLevelRouteId: 'order', iconCls: 'x-fa fa-search', leaf: true, viewConfig: { xtype: 'order-tab-Order' } },
+          { text: 'Advanced Order Search ', topLevelRouteId: 'advancedsearch', iconCls: 'x-fa fa-search', leaf: true, viewConfig: { xtype: 'order-OrderSearchView' } },
+          { text: 'Upload/Download file', topLevelRouteId: 'uploaddownload', iconCls: 'x-fa fa-search', leaf: true, viewConfig: { xtype: 'upload-download' } }
+
       ]
     };
 
