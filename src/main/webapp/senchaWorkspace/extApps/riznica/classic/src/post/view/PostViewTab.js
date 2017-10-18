@@ -12,7 +12,6 @@ Ext.define("riznica.post.view.PostViewTab", {
   requires: "riznica.post.view.PostViewTabController",
 
   controller: "postTab-ViewController",
-  activeTab: 0,
 
 
   initComponent: function() {
